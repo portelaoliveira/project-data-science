@@ -9,6 +9,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
 from sklearn.model_selection import train_test_split
 
+from functions import *
+
 # Importar base de dados
 months = {
     "jan": 1,
@@ -124,8 +126,15 @@ data_base_airbnb["extra_people"] = data_base_airbnb["extra_people"].astype(
 
 # Analisar correlação entre as colunas
 
-plt.figure(figsize=(15, 10))
-sns.heatmap(
-    data_base_airbnb.corr(numeric_only=True), annot=True, cmap="Greens"
-)
-plt.savefig("imgs/corr.png")
+heatmap_corr(data_base_airbnb)
+
+# Outliers das colunas
+
+box_diagram(data_base_airbnb["price"], "box_diagram_price")
+histogram(data_base_airbnb["price"], "histogram_price")
+
+data_base_airbnb, excludes_lines = exclude_outliers(data_base_airbnb, "price")
+print("{} linhas removidas".format(excludes_lines))
+
+histogram(data_base_airbnb["price"], "histogram_price_exclude_outliers")
+print(data_base_airbnb.shape)
