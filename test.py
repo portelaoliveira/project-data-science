@@ -40,7 +40,7 @@ for file in path_dataset.iterdir():
     df["ano"] = year
     df["mes"] = month
 
-    data_base_airbnb = pd.concat([df, data_base_airbnb], ignore_index=True)
+    data_base_airbnb = pd.concat([data_base_airbnb, df], ignore_index=True)
 
 # Listar todas as colunas
 # print(list(data_base_airbnb.columns))
@@ -120,4 +120,12 @@ data_base_airbnb["extra_people"] = data_base_airbnb["extra_people"].astype(
     np.float32, copy=False
 )
 # verificando os tipos
-print(data_base_airbnb.dtypes)
+# print(data_base_airbnb.dtypes)
+
+# Analisar correlação entre as colunas
+
+plt.figure(figsize=(15, 10))
+sns.heatmap(
+    data_base_airbnb.corr(numeric_only=True), annot=True, cmap="Greens"
+)
+plt.savefig("imgs/corr.png")
