@@ -40,7 +40,7 @@ def box_diagram(column, file_name):
 
 def histogram(column, file_name):
     plt.figure(figsize=(15, 5))
-    sns.distplot(column, hist=True)
+    sns.histplot(column, kde=True, stat="density")
     plt.savefig(f"imgs/{file_name}.png")
 
 

@@ -130,6 +130,7 @@ heatmap_corr(data_base_airbnb)
 
 # Outliers das colunas
 
+# Price
 box_diagram(data_base_airbnb["price"], "box_diagram_price")
 histogram(data_base_airbnb["price"], "histogram_price")
 
@@ -137,4 +138,19 @@ data_base_airbnb, excludes_lines = exclude_outliers(data_base_airbnb, "price")
 print("{} linhas removidas".format(excludes_lines))
 
 histogram(data_base_airbnb["price"], "histogram_price_exclude_outliers")
+print(data_base_airbnb.shape)
+
+# Extra People
+
+box_diagram(data_base_airbnb["extra_people"], "box_diagram_extra_people")
+histogram(data_base_airbnb["extra_people"], "histogram_extra_people")
+
+data_base_airbnb, excludes_lines = exclude_outliers(
+    data_base_airbnb, "extra_people"
+)
+print("{} linhas removidas".format(excludes_lines))
+
+histogram(
+    data_base_airbnb["extra_people"], "histogram_extra_people_exclude_outliers"
+)
 print(data_base_airbnb.shape)
