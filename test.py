@@ -141,7 +141,6 @@ histogram(data_base_airbnb["price"], "histogram_price_exclude_outliers")
 print(data_base_airbnb.shape)
 
 # Extra People
-
 box_diagram(data_base_airbnb["extra_people"], "box_diagram_extra_people")
 histogram(data_base_airbnb["extra_people"], "histogram_extra_people")
 
@@ -154,3 +153,16 @@ histogram(
     data_base_airbnb["extra_people"], "histogram_extra_people_exclude_outliers"
 )
 print(data_base_airbnb.shape)
+
+# Host Listings Count
+box_diagram(
+    data_base_airbnb["host_listings_count"], "box_diagram_host_listings_count"
+)
+bar_graph(
+    data_base_airbnb["host_listings_count"], "bar_graph_host_listings_count"
+)
+
+data_base_airbnb, excludes_lines = exclude_outliers(
+    data_base_airbnb, "host_listings_count"
+)
+print("{} linhas removidas".format(excludes_lines))
