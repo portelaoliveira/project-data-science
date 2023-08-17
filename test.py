@@ -175,3 +175,18 @@ data_base_airbnb, excludes_lines = exclude_outliers(
     data_base_airbnb, "accommodates"
 )
 print("{} linhas removidas".format(excludes_lines))
+
+# Bathrooms
+box_diagram(data_base_airbnb["bathrooms"], "box_diagram_bathrooms")
+# bar_graph(data_base_airbnb["bathrooms"], "bar_graph_bathrooms")
+
+plt.figure(figsize=(15, 5))
+sns.barplot(
+    x=data_base_airbnb["bathrooms"].value_counts().index,
+    y=data_base_airbnb["bathrooms"].value_counts(),
+)
+plt.savefig(f"imgs/bar_graph_bathrooms.png")
+data_base_airbnb, excludes_lines = exclude_outliers(
+    data_base_airbnb, "bathrooms"
+)
+print("{} linhas removidas".format(excludes_lines))
