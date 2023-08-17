@@ -199,3 +199,10 @@ data_base_airbnb, excludes_lines = exclude_outliers(
     data_base_airbnb, "bedrooms"
 )
 print("{} linhas removidas".format(excludes_lines))
+
+# Beds
+box_diagram(data_base_airbnb["beds"], "box_diagram_beds")
+bar_graph(data_base_airbnb["beds"], "bar_graph_beds")
+
+data_base_airbnb, excludes_lines = exclude_outliers(data_base_airbnb, "beds")
+print("{} linhas removidas".format(excludes_lines))
