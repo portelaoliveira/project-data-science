@@ -221,3 +221,12 @@ print("{} linhas removidas".format(excludes_lines))
 
 data_base_airbnb = data_base_airbnb.drop("guests_included", axis=1)
 print(data_base_airbnb.shape)
+
+# Minimum Nights
+box_diagram(data_base_airbnb["minimum_nights"], "box_diagram_minimum_nights")
+bar_graph(data_base_airbnb["minimum_nights"], "bar_graph_minimum_nights")
+
+data_base_airbnb, excludes_lines = exclude_outliers(
+    data_base_airbnb, "minimum_nights"
+)
+print("{} linhas removidas".format(excludes_lines))
