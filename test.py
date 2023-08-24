@@ -252,7 +252,26 @@ print(data_base_airbnb.shape)
 
 print(data_base_airbnb["property_type"].value_counts())
 
-plt.figure(figsize=(15, 5))
+plt.figure(figsize=(20, 18))
 graph = sns.countplot(x=data_base_airbnb["property_type"])
 graph.tick_params(axis="x", rotation=90)
 plt.savefig(f"imgs/bar_graph_property_type.png")
+
+table_types_house = data_base_airbnb["property_type"].value_counts()
+columns_groupy = []
+
+for type in table_types_house.index:
+    if table_types_house[type] < 2000:
+        columns_groupy.append(type)
+print(columns_groupy)
+
+for type in columns_groupy:
+    data_base_airbnb.loc[
+        data_base_airbnb["property_type"] == type, "property_type"
+    ] = "Outros"
+
+print(data_base_airbnb["property_type"].value_counts())
+plt.figure(figsize=(20, 16))
+graph_filt = sns.countplot(x=data_base_airbnb["property_type"])
+graph_filt.tick_params(axis="x", rotation=90)
+plt.savefig(f"imgs/bar_filt_graph_property_type.png")
