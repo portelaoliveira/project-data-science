@@ -36,6 +36,7 @@ def box_diagram(column, file_name):
     ax2.set_xlim(upper_and_lower_limit(column))
     sns.boxplot(x=column, ax=ax2)
     plt.savefig(f"imgs/{file_name}.png")
+    plt.close()
 
 
 def histogram(column, file_name):
