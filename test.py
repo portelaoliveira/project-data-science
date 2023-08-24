@@ -275,3 +275,10 @@ plt.figure(figsize=(20, 16))
 graph_filt = sns.countplot(x=data_base_airbnb["property_type"])
 graph_filt.tick_params(axis="x", rotation=90)
 plt.savefig(f"imgs/bar_filt_graph_property_type.png")
+
+# Room Type
+print(data_base_airbnb["room_type"].value_counts())
+plt.figure(figsize=(18, 16))
+graph_filt = sns.countplot(x=data_base_airbnb["room_type"])
+graph_filt.tick_params(axis="x", rotation=90)
+plt.savefig(f"imgs/bar_graph_room_type.png")
