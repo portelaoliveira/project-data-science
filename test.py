@@ -232,8 +232,17 @@ data_base_airbnb, excludes_lines = exclude_outliers(
 print("{} linhas removidas".format(excludes_lines))
 
 # Maximum Nights
-box_diagram(data_base_airbnb["maximum_nights"], "box_diagram_minimum_nights")
-bar_graph(data_base_airbnb["maximum_nights"], "bar_graph_minimum_nights")
+box_diagram(data_base_airbnb["maximum_nights"], "box_diagram_maximum_nights")
+bar_graph(data_base_airbnb["maximum_nights"], "bar_graph_maximum_nights")
 
 data_base_airbnb = data_base_airbnb.drop("maximum_nights", axis=1)
+print(data_base_airbnb.shape)
+
+# Number of Reviews
+box_diagram(
+    data_base_airbnb["number_of_reviews"], "box_diagram_number_of_reviews"
+)
+bar_graph(data_base_airbnb["number_of_reviews"], "bar_graph_number_of_reviews")
+
+data_base_airbnb = data_base_airbnb.drop("number_of_reviews", axis=1)
 print(data_base_airbnb.shape)
