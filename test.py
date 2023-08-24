@@ -246,3 +246,13 @@ bar_graph(data_base_airbnb["number_of_reviews"], "bar_graph_number_of_reviews")
 
 data_base_airbnb = data_base_airbnb.drop("number_of_reviews", axis=1)
 print(data_base_airbnb.shape)
+
+# Tratamento de Colunas de Valores de Texto
+# Property Type
+
+print(data_base_airbnb["property_type"].value_counts())
+
+plt.figure(figsize=(15, 5))
+graph = sns.countplot(x=data_base_airbnb["property_type"])
+graph.tick_params(axis="x", rotation=90)
+plt.savefig(f"imgs/bar_graph_property_type.png")
